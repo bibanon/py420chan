@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# 4chan URL generator. Inherit and override this for derivative classes  (e.g. 420chan API, 8chan/vichan API)
+# URL generator. Inherit and override this for derivative classes  (e.g. 420chan API, 8chan/vichan API)
 class Url(object):
     # default value for board in case user wants to query board list
     def __init__(self, board, https=False):
@@ -10,26 +10,26 @@ class Url(object):
         
         # 4chan API URL Subdomains
         DOMAIN = {
-            'api': self._protocol + 'a.4cdn.org',   # API subdomain
-            'boards': self._protocol + 'boards.4chan.org', # HTML subdomain
-            'file': self._protocol + 'i.4cdn.org',  # file (image) host
-            'thumbs': self._protocol + 'i.4cdn.org',# thumbs host
-            'static': self._protocol + 's.4cdn.org' # static host
+            'api': self._protocol + 'api.420chan.org',   # API subdomain
+            'boards': self._protocol + 'boards.420chan.org', # HTML subdomain
+            'file': self._protocol + 'boards.420chan.org',  # file (image) host
+            'thumbs': self._protocol + 'boards.420chan.org',# thumbs host
+            'static': self._protocol + 'boards.420chan.org/static' # static host
         }
         
         # 4chan API URL Templates
         TEMPLATE = {
             'api': {  # URL structure templates
                 'board': DOMAIN['api'] + '/{board}/{page}.json',
-                'thread': DOMAIN['api'] + '/{board}/thread/{thread_id}.json'
+                'thread': DOMAIN['api'] + '/{board}/res/{thread_id}.json'
             },
             'http': { # Standard HTTP viewing URLs
                 'board': DOMAIN['boards'] + '/{board}/{page}.json',
-                'thread': DOMAIN['boards'] + '/{board}/thread/{thread_id}'
+                'thread': DOMAIN['boards'] + '/{board}/res/{thread_id}.php'
             },
             'data': {
-                'file': DOMAIN['file'] + '/{board}/{tim}{ext}',
-                'thumbs': DOMAIN['thumbs'] + '/{board}/{tim}s.jpg',
+                'file': DOMAIN['file'] + '/{board}/src/{tim}{ext}',
+                'thumbs': DOMAIN['thumbs'] + '/{board}/thumb/{tim}s.jpg',
                 'static': DOMAIN['static'] + '/image/{item}'
             }
         }

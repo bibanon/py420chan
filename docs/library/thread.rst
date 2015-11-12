@@ -1,26 +1,26 @@
-:class:`basc_py4chan.Thread` – 4chan Threads
+:class:`py420chan.Thread` – 420chan Threads
 ============================================
 
-:class:`basc_py4chan.Thread` allows for standard access to a 4chan thread, including listing all the posts in the thread, information such as whether the thread is locked and stickied, and lists of attached file URLs or thumbnails.
+:class:`py420chan.Thread` allows for standard access to a 420chan thread, including listing all the posts in the thread, information such as whether the thread is locked and stickied, and lists of attached file URLs or thumbnails.
 
 Basic Usage
 -----------
 
-.. autoclass:: basc_py4chan.Thread
+.. autoclass:: py420chan.Thread
 
 Methods
 -------
 
-    Thread objects are not instantiated directly, but instead through the appropriate :class:`basc_py4chan.Board` methods such as :meth:`basc_py4chan.Board.get_thread`.
+    Thread objects are not instantiated directly, but instead through the appropriate :class:`py420chan.Board` methods such as :meth:`py420chan.Board.get_thread`.
 
-    .. automethod:: basc_py4chan.Thread.files
+    .. automethod:: py420chan.Thread.files
 
-    .. automethod:: basc_py4chan.Thread.thumbs
+    .. automethod:: py420chan.Thread.thumbs
 
-    .. automethod:: basc_py4chan.Thread.filenames
+    .. automethod:: py420chan.Thread.filenames
 
-    .. automethod:: basc_py4chan.Thread.thumbnames
+    .. automethod:: py420chan.Thread.thumbnames
 
-    .. automethod:: basc_py4chan.Thread.update
+    .. automethod:: py420chan.Thread.update
 
-    .. automethod:: basc_py4chan.Thread.expand
+    .. automethod:: py420chan.Thread.expand

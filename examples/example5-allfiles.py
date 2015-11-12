@@ -10,7 +10,7 @@ def main():
     thread = board.get_thread(first_thread_id)
 
     # display the url of every file on the first thread, even extra files in posts
-    for url in first_thread.files():
+    for url in thread.files():
         print(url)
 
 if __name__ == '__main__':

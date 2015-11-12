@@ -7,7 +7,7 @@ from .file import File
 from .util import clean_comment_body
 
 class Post(object):
-    """Represents a 4chan post.
+    """Represents a post.
 
     Attributes:
         post_id (int): ID of this post. Eg: ``123123123``, ``456456456``.
@@ -31,7 +31,7 @@ class Post(object):
     def __init__(self, thread, data):
         self._thread = thread
         self._data = data
-        self._url = Url(board=self._thread._board.name, https=thread.https)		# 4chan URL generator
+        self._url = Url(board=self._thread._board.name, https=thread.https)		# URL generator
 
         # add file objects if they exist
         if self.has_file:

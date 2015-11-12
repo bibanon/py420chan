@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""4chan Python Library.
+"""420chan Python Library.
 
-BASC-py4chan is a Python library that gives access to the 4chan API
+py420chan is a Python library that gives access to the 420chan API
 and an object-oriented way to browse and get board and thread
 information quickly and easily.
 
@@ -16,22 +16,21 @@ the LICENSE file for more details.
 from setuptools import setup
 
 setup(
-    name='BASC-py4chan',
-    version='0.6.0',
-    description=("Python 4chan API Wrapper. Improved version of Edgeworth's "
-                 "original py-4chan wrapper."),
+    name='py420chan',
+    version='0.0.1',
+    description=("Python 420chan API Wrapper. Based on the BASC-py4chan 4chan API Wrapper."),
     long_description=open('README.rst').read(),
     license=open('LICENSE').read(),
     author='Antonizoon (Antonizoon Overtwater)',
     author_email='antonizoon@bibanon.org',
-    url='http://github.com/bibanon/BASC-py4chan',
-    packages=['basc_py4chan'],
+    url='http://github.com/bibanon/py420chan',
+    packages=['py420chan'],
     package_dir={
-        'basc_py4chan': 'basc_py4chan',
+        'py420chan': 'py420chan',
     },
     package_data={'': ['README.rst', 'LICENSE']},
     install_requires=['requests >= 1.0.0'],
-    keywords='4chan api',
+    keywords='420chan api',
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',

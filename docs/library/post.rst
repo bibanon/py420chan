@@ -1,21 +1,21 @@
-:class:`basc_py4chan.Post` – 4chan Post
+:class:`py420chan.Post` – 420chan Post
 =======================================
 
-:class:`basc_py4chan.Post` allows for standard access to a 4chan post.
+:class:`py420chan.Post` allows for standard access to a 420chan post.
 
 Example
 -------
 
-Here is a sample application that grabs and prints :class:`basc_py4chan.Thread` and :class:`basc_py4chan.Post` information:
+Here is a sample application that grabs and prints :class:`py420chan.Thread` and :class:`py420chan.Post` information:
 
 .. code-block:: python
 
     # credits to Anarov for improved example
     from __future__ import print_function
-    import basc_py4chan
+    import py420chan
 
     # get the board we want
-    board = basc_py4chan.Board('v')
+    board = py420chan.Board('v')
 
     # select the first thread on the board
     all_thread_ids = board.get_all_thread_ids()
@@ -48,6 +48,6 @@ Here is a sample application that grabs and prints :class:`basc_py4chan.Thread` 
 Basic Usage
 -----------
 
-.. autoclass:: basc_py4chan.Post
+.. autoclass:: py420chan.Post
 
-    Post objects are not instantiated directly, but through a :class:`basc_py4chan.Thread` object with an attribute like :attr:`basc_py4chan.Thread.all_posts`.
+    Post objects are not instantiated directly, but through a :class:`py420chan.Thread` object with an attribute like :attr:`py420chan.Thread.all_posts`.

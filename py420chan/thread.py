@@ -5,7 +5,7 @@ from .url import Url
 
 
 class Thread(object):
-    """Represents a 4chan thread.
+    """Represents a thread.
 
     Attributes:
         closed (bool): Whether the thread has been closed.
@@ -25,8 +25,6 @@ class Thread(object):
         self.replies = []
         self.is_404 = False
         self.last_reply_id = 0
-        self.omitted_posts = 0
-        self.omitted_images = 0
         self.want_update = False
         self._last_modified = None
 
@@ -52,7 +50,8 @@ class Thread(object):
 
         res.raise_for_status()
 
-        return cls._from_json(res.json(), board, id, res.headers['Last-Modified'])
+        return cls._from_json(res.json(), board, id)
+#        return cls._from_json(res.json(), board, id, res.headers['Last-Modified'])
 
     @classmethod
     def _from_json(cls, json, board, id=None, last_modified=None):
@@ -67,9 +66,7 @@ class Thread(object):
 
         t.id = head.get('no', id)
         t.num_replies = head['replies']
-        t.num_images = head['images']
-        t.omitted_images = head.get('omitted_images', 0)
-        t.omitted_posts = head.get('omitted_posts', 0)
+#        t.num_images = head['images']      # not implemented yet
 
         if id is not None:
             if not t.replies:
@@ -167,10 +164,8 @@ class Thread(object):
 
             # Remove
             self.want_update = False
-            self.omitted_images = 0
-            self.omitted_posts = 0
 
-            self._last_modified = res.headers['Last-Modified']
+#            self._last_modified = res.headers['Last-Modified']
             posts = res.json()['posts']
 
             original_post_count = len(self.replies)
@@ -193,18 +188,13 @@ class Thread(object):
         else:
             res.raise_for_status()
 
-    def expand(self):
-        """If there are omitted posts, update to include all posts."""
-        if self.omitted_posts > 0:
-            self.update()
-
     @property
     def posts(self):
         return [self.topic] + self.replies
 
     @property
     def all_posts(self):
-        self.expand()
+        self.update()
         return self.posts
 
     @property
@@ -224,12 +214,6 @@ class Thread(object):
         return self.topic.semantic_slug
 
     def __repr__(self):
-        extra = ''
-        if self.omitted_images or self.omitted_posts:
-            extra = ', %i omitted images, %i omitted posts' % (
-                self.omitted_images, self.omitted_posts
-            )
-
-        return '<Thread /%s/%i, %i replies%s>' % (
-            self._board.name, self.id, len(self.replies), extra
+        return '<Thread /%s/%i, %i replies>' % (
+            self._board.name, self.id, len(self.replies)
         )

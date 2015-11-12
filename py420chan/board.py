@@ -71,7 +71,7 @@ def get_all_boards(*args, **kwargs):
 
 
 class Board(object):
-    """Represents a 4chan board.
+    """Represents a Board.
 
     Attributes:
         name (str): Name of this board, such as ``tg`` or ``k``.
@@ -189,14 +189,14 @@ class Board(object):
 
         return threads
 
-    def get_threads(self, page=1):
+    def get_threads(self, page=0):
         """Returns all threads on a certain page.
 
         Gets a list of Thread objects for every thread on the given page. If a thread is
         already in our cache, the cached version is returned and thread.want_update is
         set to True on the specific thread object.
 
-        Pages on 4chan are indexed from 1 onwards.
+        Pages on 420chan are indexed from 0 onwards.
 
         Args:
             page (int): Page to request threads for. Defaults to the first page.

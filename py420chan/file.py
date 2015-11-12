@@ -13,8 +13,6 @@ class File(object):
         data (dict) - The post or extra_files dict from the 8chan API.
     
     Attributes:
-        file_md5 (string): MD5 hash of the file attached to this post.
-        file_md5_hex (string): Hex-encoded MD5 hash of the file attached to this post.
         filename (string): Original name of the file attached to this post.
         file_url (string): URL of the file attached to this post.
         file_extension (string): Extension of the file attached to this post. Eg: ``png``, ``webm``, etc.
@@ -33,29 +31,27 @@ class File(object):
         self._data = data
         self._url = Url(board=self._post._thread._board.name, https=self._post._thread._board.https)       # 8chan URL generator
 
+    # (May Change) 420chan does not show MD5sums
     @property
     def file_md5(self):
-        # Py 2/3 compatible equivalent of:
-        #return self._data['md5'].decode('base64')
-        # More info: http://stackoverflow.com/a/16033232
-        # returns a bytestring
-        return b64decode(self._data['md5'])
+        raise AttributeError("'py420chan.File' object has no attribute 'file_md5'")
         
+    # (May Change) 420chan does not show MD5sums
     @property
     def file_md5_hex(self):
-        return hexlify(self.file_md5).decode('ascii')
+        raise AttributeError("'py420chan.File' object has no attribute 'file_md5'")
 
     @property
     def filename(self):
         return '%s%s' % (
-            self._data['tim'],
+            self._data['filename'],
             self._data['ext']
         )
 
     @property
     def file_url(self):
         return self._url.file_url(
-            self._data['tim'],
+            self._data['filename'],
             self._data['ext']
         )
 
@@ -75,9 +71,10 @@ class File(object):
     def file_height(self):
         return self._data.get('h')
 
+    # (May Change) 420chan does not inform of deleted file
     @property
     def file_deleted(self):
-        return self._data.get('filedeleted') == 1
+        raise AttributeError("'py420chan.File' object has no attribute 'file_deleted'")
 
     @property
     def thumbnail_width(self):
@@ -90,14 +87,14 @@ class File(object):
     @property
     def thumbnail_fname(self):
         return '%ss.jpg' % (
-            self._data['tim']
+            self._data['filename']
         )
 
     @property
     def thumbnail_url(self):
         board = self._post._thread._board
         return self._url.thumb_url(
-            self._data['tim']
+            self._data['filename']
         )
 
     def file_request(self):

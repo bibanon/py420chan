@@ -1,11 +1,11 @@
-:class:`basc_py4chan.File` – 4chan File
+:class:`py420chan.File` – 420chan File
 =======================================
 
-:class:`basc_py4chan.Post` allows for standard access to a 4chan file. This provides programs with a complete File object that contains all metadata about the 4chan file, and makes migration easy if 4chan ever makes multiple files in one Post possible (as 8chan does).
+:class:`py420chan.Post` allows for standard access to a 420chan file. This provides programs with a complete File object that contains all metadata about the 420chan file, and makes migration easy if 420chan ever makes multiple files in one Post possible (as 8chan does).
 
 Basic Usage
 -----------
 
-.. autoclass:: basc_py4chan.File
+.. autoclass:: py420chan.File
 
-    File objects are not instantiated directly, but through a :class:`basc_py4chan.File` object with an attribute like :attr:`basc_py4chan.Post.first_file`.
+    File objects are not instantiated directly, but through a :class:`py420chan.File` object with an attribute like :attr:`py420chan.Post.first_file`.
