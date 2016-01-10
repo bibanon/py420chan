@@ -32,9 +32,9 @@ Usage
 
 .. code:: python
 
-    import basc_py4chan
-    b = basc_py4chan.Board('b')
-    thread = b.get_thread(423491034)
+    import py420chan
+    nom = py420chan.Board('nom')
+    thread = nom.get_thread(423491034)
 
     print(thread)
 
