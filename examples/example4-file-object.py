@@ -4,7 +4,7 @@ import py420chan
 
 def main():
     # grab the first thread on the board by checking first page
-    board = py420chan.Board('v')
+    board = py420chan.Board('nom')
     all_thread_ids = board.get_all_thread_ids()
     first_thread_id = all_thread_ids[0]
     thread = board.get_thread(first_thread_id)
