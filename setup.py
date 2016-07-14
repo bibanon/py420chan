@@ -17,7 +17,7 @@ from setuptools import setup
 
 setup(
     name='py420chan',
-    version='0.0.1',
+    version='0.0.2',
     description=("Python 420chan API Wrapper. Based on the BASC-py4chan 4chan API Wrapper."),
     long_description=open('README.rst').read(),
     license=open('LICENSE').read(),
