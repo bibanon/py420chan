@@ -14,7 +14,6 @@ def main():
         if post.has_file:
             print(":: Post #", post.post_number)
             print("  ", post.file.filename)
-            print("  ", post.file.file_md5_hex)
             print("  ", post.file.file_url)
             print("  ", post.file.thumbnail_url)
             print()
