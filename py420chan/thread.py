@@ -26,7 +26,7 @@ class Thread(object):
         self.is_404 = False
         self.last_reply_id = 0
         self.want_update = False
-        self._last_modified = None
+#        self._last_modified = None
 
     def __len__(self):
         return self.num_replies
@@ -42,6 +42,10 @@ class Thread(object):
     @property
     def sticky(self):
         return self.topic._data.get('sticky') == 1
+    
+    @property
+    def _last_modified(self):
+        return self.topic._data.get('last-modified')
 
     @classmethod
     def _from_request(cls, board, res, id):
@@ -56,7 +60,7 @@ class Thread(object):
     @classmethod
     def _from_json(cls, json, board, id=None, last_modified=None):
         t = cls(board, id)
-        t._last_modified = last_modified
+#        t._last_modified = last_modified
 
         posts = json['posts']
         head, rest = posts[0], posts[1:]

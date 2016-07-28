@@ -3,7 +3,7 @@ from __future__ import print_function
 import py420chan
 
 nom = py420chan.Board('nom')
-threads = b.get_threads()
+threads = nom.get_threads()
 print("Got %i threads" % len(threads))
 first_thread = threads[0]
 print("First thread: %r" % first_thread)
