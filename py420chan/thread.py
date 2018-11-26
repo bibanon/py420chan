@@ -59,29 +59,37 @@ class Thread(object):
 
     @classmethod
     def _from_json(cls, json, board, id=None, last_modified=None):
-        t = cls(board, id)
-#        t._last_modified = last_modified
+        try:
+            t = cls(board, id)
+#            t._last_modified = last_modified
 
-        posts = json['posts']
-        head, rest = posts[0], posts[1:]
+            posts = json['posts']
+            head, rest = posts[0], posts[1:]
 
-        t.topic = t.op = Post(t, head)
-        t.replies.extend(Post(t, p) for p in rest)
+            t.topic = t.op = Post(t, head)
+            t.replies.extend(Post(t, p) for p in rest)
 
-        t.id = head.get('no', id)
-        t.num_replies = head['replies']
-#        t.num_images = head['images']      # not implemented yet
+            t.id = head.get('no', id)
+            t.num_replies = head['replies']
+#            t.num_images = head['images']      # not implemented yet
 
-        if id is not None:
-            if not t.replies:
-                t.last_reply_id = t.topic.post_number
+            if id is not None:
+                if not t.replies:
+                    t.last_reply_id = t.topic.post_number
+                else:
+                    t.last_reply_id = t.replies[-1].post_number
+
             else:
-                t.last_reply_id = t.replies[-1].post_number
+                t.want_update = True
 
-        else:
-            t.want_update = True
+            return t
 
-        return t
+        # in regards to issue #1, handle missing thread ID in 
+        # `head, rest = posts[0], posts[1:]`
+        # by catching IndexError: string index out of range
+        # and returning None as seen in basc_py4chan
+        except IndexError as e:
+            return None
 
     def files(self):
         """Returns the URLs of all files attached to posts in the thread."""

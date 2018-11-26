@@ -17,11 +17,11 @@ from setuptools import setup
 
 setup(
     name='py420chan',
-    version='0.0.2',
+    version='0.0.3',
     description=("Python 420chan API Wrapper. Based on the BASC-py4chan 4chan API Wrapper."),
     long_description=open('README.rst').read(),
     license=open('LICENSE').read(),
-    author='Antonizoon (Antonizoon Overtwater)',
+    author='Antonizoon Overtwater',
     author_email='antonizoon@bibanon.org',
     url='http://github.com/bibanon/py420chan',
     packages=['py420chan'],
